@@ -1,16 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-</head>
-
-<body>
 
     <!-- section-1 -->
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
@@ -46,35 +36,33 @@
     <div class="container-fluid sec-2">
         <div class="row fourdivs">
 
-
             <div class="col-lg-2  Aboutbox3 clsFlexxx col-md-4">
                 <i class="fa-solid fa-medal fnt-cn"></i>
                 <div class="crts">
-                    <h2>14800+</h2>
+                    <h2 ><span class="counter" data-end-value="14800">0</span>+</h2>
                     <p>success Compaign</p>
                 </div>
             </div>
 
-
             <div class="col-lg-2 clsFlexx col-md-4 Aboutbox4">
                 <i class="fa-solid fa-globe fnt-cn"></i>
                 <div class="crtss">
-                    <h3>38+</h3>
+                    <h3> <span class="counter" data-end-value="38">0</span>+</h3>
                     <p>hospitals we have</p>
                 </div>
             </div>
-            <div class="col-lg-2 clsFlexxx col-md-4">
+            <div class="col-lg-2 clsFlexxx col-md-4 Aboutbox3">
                 <i class="fa-solid fa-people-roof"></i>
                 <div class="crts">
-                    <h3>3crore+</h3>
+                    <h3> <span class="counter" data-end-value="3">3</span>crore+</h3>
                     <p>Campaign running</p>
                 </div>
             </div>
-
             <div class="col-lg-2 clsFlexx col-md-4 Aboutbox4">
                 <i class="fas fa-handshake"></i>
+
                 <div class="crtss">
-                    <h3>148lakh+</h3>
+                    <h3> <span class="counter" data-end-value="148">0</span>lakh+</h3>
                     <p>Customer</p>
                 </div>
             </div>
@@ -182,34 +170,42 @@
     </div> -->
 
     <!-- section-2 end -->
-       <div class="container project-main">
-    <div class="row">
-        @forelse ($projects as $project)
-            <div class="col-3 wrapper"> <!--agar ik hi project hai toh aapko iss class m jaana hai .img-box img (issmne aapko margin-left:13px dena hogha )-->
-                <div class="card main-cnt">
-                    <a href="{{ route('project-details', $project->slug) }}" style="text-decoration: none">
-                        <div class="img-box">
-                            <img src="{{ asset('storage/' . $project->image) }}" alt="image url">
+       <div class="container project-main campaignsInner"  style="margin-bottom:5rem">
+        <div class="row justify-content-between text-center">
+            <h2>Our Campaigns</h2>
+            <p>
+                Our vision is nothing less than realizing the full potential of the Internet – universal access to
+                research
+                and education
+            </p>
+            {{-- COMPAIGN BOX --}}
+            @forelse ($projects as $project)
+                <div class="col-md-4 mt-3">
+                    <div class="campaignBox">
+                        <figure>
+                            <img src="{{ asset('storage/' . $project->image) }}" alt="">
+                        </figure>
+                        <div class="campaignboxcontent">
+                            <a href="{{ route('project-details', $project->slug) }}"> <h3>{{ $project->title }}</h3></a>
+                            <p>{!! html_entity_decode(Str::limit($project->description, 100)) !!}</p>
+                            <a href="{{ route('project-details', $project->slug) }}" id="readMore">
+
+                                <button>Read
+                                More</button></a>
                         </div>
-                        <div class="content project-cnt">
-                            <h2 class="card-one">{{ $project->title }}</h2>
-                            <p>
-                            {!! html_entity_decode(Str::limit($project->description , 80)) !!}
-                            </p>
-                        </div>
-                    </a>
+                    </div>
                 </div>
-            </div>
-        @empty
-        @endforelse
-    </div>
-   
+            @empty
+                <b>Projects are not available now.</b>
+            @endforelse
+        </div>
+
   </div>
     <!-- section renew -->
 
     <!-- end -->
     <!-- section 3 -->
-    <div class="container sec-3">
+    <div class="container sec-3 sec_marginB">
         <div class="row">
             <div class="sct-2 col">
                 <div class="col-lg-6 col-md-12">
@@ -268,7 +264,7 @@
         </div>
     </div>
     <!-- section end -->
-    <div class="container sec-8">
+    <div class="container sec-8 sec_marginB">
         <div class="row">
             <div class="col-lg-4 col-md-6">
                 <div class="orphan-cnt">
@@ -286,9 +282,11 @@
                         adipisicing elit. Adipisci tempora nesciunt cupiditate dolor!
                         Autem alias unde voluptas minima sequi ea nesciunt?
                     </p>
+                    <a href="{{route('donate-now')}}">
                     <button type="button" class="btn btn-outline-success">
                         Donate now
                     </button>
+                </a>
                 </div>
             </div>
             <div class="col-3 rounded-circle text-center CustomBorder" style="border-width: 4px;">
@@ -302,7 +300,7 @@
     </div>
     <!-- end -->
     <!-- start -->
-    <div class="container MyCustomCard">
+    <div class="container MyCustomCard sec_marginB">
         <div class="row">
             <div class="col-lg-3 col-md-6 mediaQur">
                 <div class="card Main-cnt">
@@ -362,7 +360,7 @@
 
     <!-- end -->
     <!-- section-5 start -->
-    <div class="container sect-5">
+    <div class="container sect-5 sec_marginB">
         <div class="row">
             <div class="col sct-2">
                 <div class="col-lg-4 col-md-12">
@@ -400,13 +398,19 @@
     <!-- next-section -->
     <div class="container sect-6">
         <div class="row">
+            <h1 class="text-center mb-3">Testimonial</h1>
             <div class="col-lg-3 col-md-6 mediaQur">
                 <div class="card">
                     <img src="{{ asset('images/umar-ben-ZGQKW-nIW8o-unsplash.jpg') }}" class="card-img-top sec-img" alt="..." />
                     <div class="card-body">
                         <h5 class="card-title">Alisha</h5>
-                        <p class="card-text">Support military families</p>
-                        <p class="card-para">
+                        <p class="card-text">Designation</p>
+
+                       <p class="card-para">
+                            Donated
+                            <span style="color: red; float: right">5000</span>
+                        </p>
+                        <p>
                             Experience <span style="color: red; float: right">2years</span>
                         </p>
                     </div>
@@ -418,8 +422,12 @@
                     <img src="{{ asset('images/deepak-mahajan-8ig-SzHpqDw-unsplash.jpg') }}" class="card-img-top" alt="..." />
                     <div class="card-body">
                         <h5 class="card-title">Deepak</h5>
-                        <p class="card-text">Family support program</p>
+                        <p class="card-text">Designation</p>
                         <p class="card-para">
+                            Donated
+                            <span style="color: red; float: right">5000</span>
+                        </p>
+                        <p>
                             Experience <span style="color: red; float: right">1years</span>
                         </p>
                     </div>
@@ -430,8 +438,12 @@
                     <img src="{{ asset('images/lisboa-ind-VnqagyZWhtk-unsplash.jpg') }}" class="card-img-top sec-img" alt="..." />
                     <div class="card-body">
                         <h5 class="card-title">Lisoba</h5>
-                        <p class="card-text">ceo of orphan</p>
-                        <p class="card-para">
+                        <p class="card-text">Designation</p>
+                         <p class="card-para">
+                            Donated
+                            <span style="color: red; float: right">5000</span>
+                        </p>
+                        <p >
                             Experience <span style="color: red; float: right">3years</span>
                         </p>
                     </div>
@@ -442,8 +454,12 @@
                     <img src="{{ asset('images/jd-chow-gutlccGLXKI-unsplash.jpg') }}" class="card-img-top" alt="..." />
                     <div class="card-body">
                         <h5 class="card-title">John</h5>
-                        <p class="card-text">child care</p>
+                        <p class="card-text">Designation</p>
                         <p class="card-para">
+                            Donated
+                            <span style="color: red; float: right">5000</span>
+                        </p>
+                        <p>
                             Experience
                             <span style="color: red; float: right">2years</span>
                         </p>
@@ -454,7 +470,7 @@
     </div>
     <!-- end -->
     <!-- section -->
-    <div class="container bnnerimg">
+    <div class="container bnnerimg sec_marginB">
         <div class="card bg-dark text-white">
             <img src="{{ asset('images/brittani-burns-LCzc79jZGf4-unsplash.jpg') }}" class="card-img footerImg" alt="..." />
             <div class="card-img-overlay MYcard">
@@ -471,10 +487,5 @@
     </div>
 
     <!-- end -->
-
-
-</body>
-
-</html>
 
 @endsection

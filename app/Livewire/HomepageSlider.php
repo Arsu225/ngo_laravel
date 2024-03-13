@@ -12,7 +12,7 @@ class HomepageSlider extends Component
 
     public function mount()
     {
-        $this->banners = Banner::select('image')->where(function ($query) {
+        $this->banners = Banner::where(function ($query) {
                           $query->whereNull('schedule_time')->orWhere('schedule_time', '<=', now());
                          })->where('is_visible', 1)->orderBy('priority', 'asc')->get();
 
