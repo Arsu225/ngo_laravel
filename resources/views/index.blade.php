@@ -45,15 +45,19 @@
     <!-- section-start -->
     <div class="container-fluid sec-2">
         <div class="row fourdivs">
-            <div class="col-lg-2 clsFlexxx col-md-4">
-            <i class="fa-solid fa-medal fnt-cn"></i>
+
+
+            <div class="col-lg-2  Aboutbox3 clsFlexxx col-md-4">
+                <i class="fa-solid fa-medal fnt-cn"></i>
                 <div class="crts">
                     <h2>14800+</h2>
                     <p>success Compaign</p>
                 </div>
             </div>
-            <div class="col-lg-2 clsFlexx col-md-4">
-            <i class="fa-solid fa-globe fnt-cn"></i>
+
+
+            <div class="col-lg-2 clsFlexx col-md-4 Aboutbox4">
+                <i class="fa-solid fa-globe fnt-cn"></i>
                 <div class="crtss">
                     <h3>38+</h3>
                     <p>hospitals we have</p>
@@ -66,8 +70,9 @@
                     <p>Campaign running</p>
                 </div>
             </div>
-            <div class="col-lg-2 clsFlexx col-md-4">
-            <i class="fas fa-handshake"></i>
+
+            <div class="col-lg-2 clsFlexx col-md-4 Aboutbox4">
+                <i class="fas fa-handshake"></i>
                 <div class="crtss">
                     <h3>148lakh+</h3>
                     <p>Customer</p>
